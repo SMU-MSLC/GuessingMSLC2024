@@ -22,6 +22,22 @@ class GameViewController: UIViewController {
         
     }
     
+    func makeGuess(guess:Int){
+        
+        let guess_feedback:GuessValue = self.guessModel.makeGuess(guess)
+        switch guess_feedback {
+        case GuessIsCorrect:
+            print("Correct Guess")
+        case GuessIsLow:
+            print("Guess was too low")
+        case GuessIsHigh:
+            print("Guess was too high")
+        default:
+            print("Should Never get here")
+        }
+        
+    }
+    
 
    
 

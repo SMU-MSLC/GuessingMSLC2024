@@ -9,9 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+    GuessIsCorrect,
+    GuessIsHigh,
+    GuessIsLow,
+} GuessValue;
+
 @interface GuessModel : NSObject
 
--(Boolean)makeGuess:(NSInteger)guess;
+-(GuessValue)makeGuess:(NSInteger)guess;
 
 @end
 

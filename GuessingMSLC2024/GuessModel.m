@@ -25,11 +25,17 @@
     return _correctNum;
 }
 
--(Boolean)makeGuess:(NSInteger)guess{
+-(GuessValue)makeGuess:(NSInteger)guess{
     
-    if (guess == [self.correctNum integerValue]){
-        return true;
+    NSInteger tmpCorrect = [self.correctNum integerValue];
+    if (guess == tmpCorrect){
+        return GuessIsCorrect;
+    }else if(guess < tmpCorrect){
+        return GuessIsLow;
+    }else if(guess >  tmpCorrect){
+        return GuessIsHigh;
     }
+    // should never get here, consider throwing an error
     return false;
 }
 
