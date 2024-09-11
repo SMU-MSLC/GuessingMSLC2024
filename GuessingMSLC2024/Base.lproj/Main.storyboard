@@ -67,9 +67,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Controller!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-nv-lxk">
-                                <rect key="frame" x="147" y="416" width="119" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTD-XS-TzA">
+                                <rect key="frame" x="16" y="103" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9d-GJ-hAX">
+                                <rect key="frame" x="16" y="145" width="361" height="35"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Make Guess"/>
+                                <connections>
+                                    <action selector="submitGuess:" destination="qzv-9r-b3h" eventType="touchUpInside" id="Y1r-Q1-Avc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Controller!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-nv-lxk">
+                                <rect key="frame" x="16" y="188" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,12 +90,36 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PZv-UA-RIO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Bd0-nv-lxk" firstAttribute="top" secondItem="H9d-GJ-hAX" secondAttribute="bottom" constant="8" symbolic="YES" id="03O-nw-cUh"/>
+                            <constraint firstItem="H9d-GJ-hAX" firstAttribute="leading" secondItem="PZv-UA-RIO" secondAttribute="leading" constant="16" id="Ill-cx-hAv"/>
+                            <constraint firstItem="PZv-UA-RIO" firstAttribute="trailing" secondItem="gTD-XS-TzA" secondAttribute="trailing" constant="16" id="K4a-OJ-Unb"/>
+                            <constraint firstItem="Bd0-nv-lxk" firstAttribute="leading" secondItem="PZv-UA-RIO" secondAttribute="leading" constant="16" id="Klm-n3-5Cb"/>
+                            <constraint firstItem="H9d-GJ-hAX" firstAttribute="top" secondItem="gTD-XS-TzA" secondAttribute="bottom" constant="8" symbolic="YES" id="MHY-P9-NLA"/>
+                            <constraint firstItem="gTD-XS-TzA" firstAttribute="top" secondItem="PZv-UA-RIO" secondAttribute="top" id="Q0a-aT-B9L"/>
+                            <constraint firstItem="PZv-UA-RIO" firstAttribute="trailing" secondItem="Bd0-nv-lxk" secondAttribute="trailing" constant="16" id="eXT-lo-UfV"/>
+                            <constraint firstItem="PZv-UA-RIO" firstAttribute="trailing" secondItem="H9d-GJ-hAX" secondAttribute="trailing" constant="16" id="fky-lY-uxP"/>
+                            <constraint firstItem="gTD-XS-TzA" firstAttribute="leading" secondItem="PZv-UA-RIO" secondAttribute="leading" constant="16" id="iPx-Se-YVO"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="G3Q-Bu-5jM" appends="YES" id="GY0-Zl-jGP"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="7Yp-Ig-iaS"/>
+                    <connections>
+                        <outlet property="feedbackLabel" destination="Bd0-nv-lxk" id="S0Z-xb-mbr"/>
+                        <outlet property="guessTextField" destination="gTD-XS-TzA" id="owB-gG-9Mv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qiC-wn-bFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="G3Q-Bu-5jM">
+                    <connections>
+                        <action selector="didTap:" destination="qzv-9r-b3h" id="Kaf-P5-aZx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1871" y="-2"/>
+            <point key="canvasLocation" x="1870.9923664122136" y="-2.1126760563380285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mjm-p1-DyJ">
@@ -104,6 +141,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

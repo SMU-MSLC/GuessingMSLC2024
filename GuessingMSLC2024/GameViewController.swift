@@ -7,38 +7,70 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UITextFieldDelegate {
 
     var guessModel:GuessModel = GuessModel()
+    
+    @IBOutlet weak var feedbackLabel: UILabel!
+    @IBOutlet weak var guessTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if(self.guessModel.makeGuess(50)){
-            print("Its was 50")
+        var elapsedTime:Int = 0
+        self.guessTextField.delegate = self
+        
+        self.guessTextField.becomeFirstResponder()
+        
+        let timer:Timer = Timer(timeInterval: 1, repeats: true) { tmp in
+            elapsedTime += 1
+            self.feedbackLabel.text = "Elapsed: \(elapsedTime)"
+        }
+        
+        RunLoop.main.add(timer, forMode: .common)
+        
+    }
+    
+    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
+        
+        self.guessTextField.resignFirstResponder()
+    }
+    
+    func makeGuess(){
+        
+        if let guess = Int(self.guessTextField.text!){
+            
+            let guess_feedback:GuessValue = self.guessModel.makeGuess(guess)
+            
+            switch guess_feedback {
+            case GuessIsCorrect:
+                self.feedbackLabel.text = "Correct Guess"
+            case GuessIsLow:
+                self.feedbackLabel.text = "Guess was too low"
+            case GuessIsHigh:
+                self.feedbackLabel.text = "Guess was too high"
+            default:
+                print("Should Never get here")
+            }
+            self.guessTextField.text = ""
+            
         }else{
-            print("it was NOT 50")
+            self.feedbackLabel.text = "Please enter an integer."
         }
         
     }
     
-    func makeGuess(guess:Int){
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.makeGuess()
         
-        let guess_feedback:GuessValue = self.guessModel.makeGuess(guess)
-        switch guess_feedback {
-        case GuessIsCorrect:
-            print("Correct Guess")
-        case GuessIsLow:
-            print("Guess was too low")
-        case GuessIsHigh:
-            print("Guess was too high")
-        default:
-            print("Should Never get here")
-        }
-        
+        self.guessTextField.resignFirstResponder()
+        return true
     }
     
 
-   
+    @IBAction func submitGuess(_ sender: UIButton) {
+        makeGuess()
+    }
+    
 
 }
