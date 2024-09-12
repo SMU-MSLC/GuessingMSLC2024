@@ -81,8 +81,14 @@
                                     <action selector="submitGuess:" destination="qzv-9r-b3h" eventType="touchUpInside" id="Y1r-Q1-Avc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Controller!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-nv-lxk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a number from 1-100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-nv-lxk">
                                 <rect key="frame" x="16" y="188" width="361" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guessing Game!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQs-Qj-EwD">
+                                <rect key="frame" x="16" y="217" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -93,6 +99,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Bd0-nv-lxk" firstAttribute="top" secondItem="H9d-GJ-hAX" secondAttribute="bottom" constant="8" symbolic="YES" id="03O-nw-cUh"/>
+                            <constraint firstItem="PZv-UA-RIO" firstAttribute="trailing" secondItem="SQs-Qj-EwD" secondAttribute="trailing" constant="16" id="INT-om-Gmg"/>
                             <constraint firstItem="H9d-GJ-hAX" firstAttribute="leading" secondItem="PZv-UA-RIO" secondAttribute="leading" constant="16" id="Ill-cx-hAv"/>
                             <constraint firstItem="PZv-UA-RIO" firstAttribute="trailing" secondItem="gTD-XS-TzA" secondAttribute="trailing" constant="16" id="K4a-OJ-Unb"/>
                             <constraint firstItem="Bd0-nv-lxk" firstAttribute="leading" secondItem="PZv-UA-RIO" secondAttribute="leading" constant="16" id="Klm-n3-5Cb"/>
@@ -100,7 +107,9 @@
                             <constraint firstItem="gTD-XS-TzA" firstAttribute="top" secondItem="PZv-UA-RIO" secondAttribute="top" id="Q0a-aT-B9L"/>
                             <constraint firstItem="PZv-UA-RIO" firstAttribute="trailing" secondItem="Bd0-nv-lxk" secondAttribute="trailing" constant="16" id="eXT-lo-UfV"/>
                             <constraint firstItem="PZv-UA-RIO" firstAttribute="trailing" secondItem="H9d-GJ-hAX" secondAttribute="trailing" constant="16" id="fky-lY-uxP"/>
+                            <constraint firstItem="SQs-Qj-EwD" firstAttribute="leading" secondItem="PZv-UA-RIO" secondAttribute="leading" constant="16" id="fuf-Qz-xqI"/>
                             <constraint firstItem="gTD-XS-TzA" firstAttribute="leading" secondItem="PZv-UA-RIO" secondAttribute="leading" constant="16" id="iPx-Se-YVO"/>
+                            <constraint firstItem="SQs-Qj-EwD" firstAttribute="top" secondItem="Bd0-nv-lxk" secondAttribute="bottom" constant="8" symbolic="YES" id="uOR-ld-Jmm"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="G3Q-Bu-5jM" appends="YES" id="GY0-Zl-jGP"/>
@@ -110,6 +119,7 @@
                     <connections>
                         <outlet property="feedbackLabel" destination="Bd0-nv-lxk" id="S0Z-xb-mbr"/>
                         <outlet property="guessTextField" destination="gTD-XS-TzA" id="owB-gG-9Mv"/>
+                        <outlet property="timeLabel" destination="SQs-Qj-EwD" id="f9k-hW-5gm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qiC-wn-bFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

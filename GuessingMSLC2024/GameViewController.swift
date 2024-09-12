@@ -13,18 +13,20 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var guessTextField: UITextField!
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var elapsedTime:Int = 0
+        
         self.guessTextField.delegate = self
         
         self.guessTextField.becomeFirstResponder()
         
+        var elapsedTime:Int = 0
         let timer:Timer = Timer(timeInterval: 1, repeats: true) { tmp in
             elapsedTime += 1
-            self.feedbackLabel.text = "Elapsed: \(elapsedTime)"
+            self.timeLabel.text = "Elapsed: \(elapsedTime)"
         }
         
         RunLoop.main.add(timer, forMode: .common)
